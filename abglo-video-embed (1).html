@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ABGLO Video Embed</title>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: #ffffff;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      width: 50%;
+      text-align: center;
+    }
+    iframe {
+      width: 100%;
+      height: 360px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    button {
+      margin-top: 1.5rem;
+      background-color: #44AC91;
+      color: white;
+      font-family: serif;
+      font-size: 1.1rem;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <iframe 
+      id="myVimeoPlayer"
+      src="https://player.vimeo.com/video/1101083627?background=0&autoplay=1&muted=1&loop=1#t=2.327" 
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
+    <button id="unmuteBtn">🔊 Play with Sound</button>
+  </div>
+
+  <script>
+    const iframe = document.getElementById('myVimeoPlayer');
+    const player = new Vimeo.Player(iframe);
+    const unmuteBtn = document.getElementById('unmuteBtn');
+
+    unmuteBtn.addEventListener('click', function () {
+      player.setVolume(1).then(() => {
+        player.play();
+      });
+    });
+  </script>
+</body>
+</html>
